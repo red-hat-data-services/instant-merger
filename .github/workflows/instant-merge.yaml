@@ -19,6 +19,8 @@ permissions:
 jobs:
 
   instant-merge:
+    permissions:
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - id: poc
