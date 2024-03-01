@@ -7,7 +7,7 @@ on:
       - opened
       - assigned
     paths:
-      - README.MD
+      - README.md
 
 permissions:
   packages: write
