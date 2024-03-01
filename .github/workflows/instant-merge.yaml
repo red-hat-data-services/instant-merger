@@ -3,6 +3,9 @@ name: Auto-Merge - ODH to RHODS
 on:
   workflow_dispatch:
   pull_request:
+    types:
+      - opened
+      - assigned
     paths:
       - README.MD
 
