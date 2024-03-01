@@ -20,10 +20,15 @@ jobs:
   instant-merge:
     runs-on: ubuntu-latest
     steps:
-      - id: instant-merge
+      - id: poc
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           # echo "$GITHUB_CONTEXT"
           echo ${{ github.event.sender.id }}
           echo ${{ github.event.sender.login }}
+      - if: ${{ github.event.sender.login == 'dchourasia' }}
+        name: Instant Merge
+        uses: ridedott/merge-me-action@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
