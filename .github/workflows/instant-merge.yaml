@@ -17,9 +17,11 @@ permissions:
 
 jobs:
 
-  setup:
+  instant-merge:
     runs-on: ubuntu-latest
     steps:
       - id: instant-merge
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          echo ${{ github.event }}
+          echo "$GITHUB_CONTEXT"
