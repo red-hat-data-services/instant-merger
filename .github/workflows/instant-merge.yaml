@@ -6,6 +6,7 @@ on:
     types:
       - opened
       - assigned
+      - reopened
     paths:
       - README.md
 
