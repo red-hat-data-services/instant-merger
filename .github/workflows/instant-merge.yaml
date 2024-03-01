@@ -24,6 +24,6 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-#          echo "$GITHUB_CONTEXT"
+          # echo "$GITHUB_CONTEXT"
           echo ${{ github.event.sender.id }}
-          echo echo ${{ github.event.sender.login }}
+          echo ${{ github.event.sender.login }}
