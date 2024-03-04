@@ -1,1 +1,1 @@
-# instant-merger doc
+# instant-merger doc updated
