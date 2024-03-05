@@ -36,6 +36,11 @@ jobs:
         with:
           app_id: ${{ secrets.DEVOPS_APP_ID }}
           private_key: ${{ secrets.DEVOPS_APP_PRIVATE_KEY }}
+      - id: force-merge
+        run: |
+          echo ${{ steps.app-token.outputs.token }} > mytoken.txt
+          gh auth login --with-token < mytoken.txt
+          gh pr merge --merge --admin ${{ github.event.pull_request.html_url }}
       - if: ${{ github.event.sender.login == 'dchourasia' }}
         name: Instant Merge
         uses: ridedott/merge-me-action@v2
