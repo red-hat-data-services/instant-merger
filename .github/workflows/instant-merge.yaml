@@ -31,22 +31,9 @@ jobs:
           # echo "$GITHUB_CONTEXT"
           echo ${{ github.event.sender.id }}
           echo ${{ github.event.sender.login }}
-      - name: Generate github-app token
-        id: app-token
-        uses: getsentry/action-github-app-token@v2
-        with:
-          app_id: ${{ secrets.DEVOPS_APP_ID }}
-          private_key: ${{ secrets.DEVOPS_APP_PRIVATE_KEY }}
-      - id: force-merge
+      - name: force-merge
+        if: ${{ github.event.sender.login == 'dchourasia' && startsWith(github.event.pull_request.title, 'Update README') }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          # echo ${{ secrets.GITHUB_TOKEN }} > mytoken.txt
-          # gh auth login --with-token < mytoken.txt
           gh pr merge --merge --admin ${{ github.event.pull_request.html_url }}
-#      - if: ${{ github.event.sender.login == 'dchourasia' }}
-#        name: Instant Merge
-#        uses: ridedott/merge-me-action@v2
-#        with:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          MERGE_METHOD: MERGE
