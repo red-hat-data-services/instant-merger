@@ -48,5 +48,5 @@ jobs:
         name: Instant Merge
         uses: ridedott/merge-me-action@v2
         with:
-          GITHUB_LOGIN: rhods-devops-app
+          GITHUB_LOGIN: dchourasia
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
