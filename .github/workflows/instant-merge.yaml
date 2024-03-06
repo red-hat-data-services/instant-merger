@@ -12,9 +12,12 @@ on:
 
 permissions:
   packages: write
-  contents: read
+  contents: write
   id-token: write
   pull-requests: write
+  checks: write
+  security-events: write
+  statuses: write
 
 jobs:
 
@@ -38,7 +41,7 @@ jobs:
           private_key: ${{ secrets.DEVOPS_APP_PRIVATE_KEY }}
       - id: force-merge
         run: |
-          echo ${{ steps.app-token.outputs.token }} > mytoken.txt
+          echo ${{ secrets.GITHUB_TOKEN }} > mytoken.txt
           gh auth login --with-token < mytoken.txt
           gh pr merge --merge ${{ github.event.pull_request.html_url }}
       - if: ${{ github.event.sender.login == 'dchourasia' }}
