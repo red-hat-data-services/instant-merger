@@ -1,1 +1,1 @@
-# instant-merger doc updated from RHDH Org
+# instant-merger doc updated from RHDH Organization
