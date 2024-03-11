@@ -11,9 +11,7 @@ on:
       - README.md
 
 permissions:
-  packages: write
   contents: write
-  id-token: write
   pull-requests: write
   checks: write
   security-events: write
